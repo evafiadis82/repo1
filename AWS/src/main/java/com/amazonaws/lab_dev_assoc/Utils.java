@@ -2,6 +2,8 @@
 
 package com.amazonaws.lab_dev_assoc;
 
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.Protocol;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 
@@ -18,5 +20,20 @@ public class Utils {
 
     System.out.printf("getRegion returns %s\n ", region.getName());
     return region;
+  }
+  
+  public static ClientConfiguration getProxy()
+  {
+	  
+	  ClientConfiguration clientCfg = new ClientConfiguration();
+	    clientCfg.setProtocol(Protocol.HTTP);
+
+	    //setup proxy connection:
+	    clientCfg.setProxyHost("proxy.ote.gr");
+	    clientCfg.setProxyPort(80);
+	    
+	    return clientCfg;
+
+	  
   }
 }

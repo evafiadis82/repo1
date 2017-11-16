@@ -28,6 +28,7 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.lab_dev_assoc.Utils;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
@@ -80,7 +81,7 @@ public class S3Sample {
 
         AmazonS3 s3 = AmazonS3ClientBuilder.standard()
             .withCredentials(new AWSStaticCredentialsProvider(credentials))
-            .withRegion("us-west-2")
+            .withRegion("eu-central-1").withClientConfiguration(Utils.getProxy())
             .build();
 
         String bucketName = "my-first-s3-bucket-" + UUID.randomUUID();
