@@ -1,3 +1,4 @@
+package com.amazonws.lab4;
 // Copyright 2017 Amazon Web Services, Inc. or its affiliates. All rights reserved.
 
 import com.amazonaws.services.kinesis.clientlibrary.interfaces.IRecordProcessor;
