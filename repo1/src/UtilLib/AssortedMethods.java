@@ -10,6 +10,8 @@ public class AssortedMethods {
 		return (int) (Math.random() * n);
 	}
 	
+
+	
 	public static int randomIntInRange(int min, int max) {
 		return randomInt(max + 1 - min) + min;
 	}
