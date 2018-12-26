@@ -15,7 +15,7 @@ public class Test {
 	    
 	   
 	    HashMap<Integer,Integer> hmap = new HashMap<Integer,Integer>();
-	    //test
+	    //test2
 	    for (int i=0; i<nums.length;i++)
         {
             int number = nums[i];
