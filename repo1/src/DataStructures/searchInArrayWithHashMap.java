@@ -9,7 +9,7 @@ import java.util.HashMap;
  *
  */
 
-public class SearchInArray {
+public class searchInArrayWithHashMap {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
