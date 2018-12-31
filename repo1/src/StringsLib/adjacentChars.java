@@ -5,9 +5,9 @@ public class adjacentChars {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		for (int i = 0; i < args.length; i++) {
+		//for (int i = 0; i < args.length; i++) {
 			// System.out.println("arg["+ i+ "]= "+ args[i]);
-		}
+		//}
 
 		String str = args[1];
 

@@ -6,18 +6,27 @@ import java.util.Queue;
 public class BreadthFirstTraversal {
 
 	
-	 void printLevelOrder(Node root)
+	public static void BFS(TreeNode root)
 	    {
-		  Queue queue=new LinkedList();
-	        queue.add(root);
-	        while(!queue.isEmpty())
+		  
+		System.out.println("Tree BFS algorithm");
+		
+		 Queue queue=new LinkedList<TreeNode>();
+	        
+		 queue.add(root);
+	     
+		 while(!queue.isEmpty())
 	        {
-	        Node tempNode=(Node)queue.poll();
-	        System.out.print(tempNode.value);
+	        TreeNode tempNode=(TreeNode)queue.poll();
+	        
+	        System.out.print(tempNode.data + " "); 
+	        
 	        if(tempNode.left!=null)
 	        queue.add(tempNode.left);
+	        
 	        if(tempNode.right!=null)
 	         queue.add(tempNode.right);
+	      
 	        }
 	    }
 	

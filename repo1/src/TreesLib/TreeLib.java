@@ -18,8 +18,7 @@ public class TreeLib {
 		return 1 + Math.min(minDepth(root.left), minDepth(root.right));
 	}
 
-	// a balanced tree is defined to be a tree such that
-	// no two leaf nodes differ in distance from the root by more than one
+	// a balanced tree is defined to be a tree such that no two leaf nodes differ in distance from the root by more than one
 	public static boolean isBalanced(TreeNode root) {
 		return (maxDepth(root) - minDepth(root) <= 1);
 	}
@@ -74,7 +73,7 @@ public class TreeLib {
 		return covers(root.left, p) || covers(root.right, p);
 	}
 
-	static int depth(Node root, Node x) { //returns distance from root
+	public static int depth(Node root, Node x) { //returns distance from root
 		if (root == null)
 			return -1;
 		if (x.value == root.value)
@@ -87,7 +86,7 @@ public class TreeLib {
 			return depth(root.right, x) + 1;
 	}
 
-	static int distance_between_node(Node root, Node left, Node right) {
+	public static int distance_between_node(Node root, Node left, Node right) {
 		int distance;
 
 		if (left == right)

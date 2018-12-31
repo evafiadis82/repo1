@@ -70,6 +70,14 @@ public class binaryTreeMethods {
 
             // Otherwise check if left subtree or right subtree is LCA
             return (left_lca != null) ? left_lca : right_lca;
-     }
+            
+            
+            /*
+             *  Traverse the tree.
+				If node (A or B) is found, return it to its parent.
+				Parent will check if it was able to get nodes from both of its child.
+				If yes, then parent is LCA.
+				If no, parent will return null if none of its child returned A or B else will return not null node
+             */     }
 	
 }

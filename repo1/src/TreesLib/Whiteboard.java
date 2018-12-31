@@ -1,6 +1,8 @@
 package TreesLib;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Whiteboard {
 
@@ -9,18 +11,122 @@ public class Whiteboard {
 	public static void main(String args[])
 	{
 		
-	Integer arr[] = { 0,1,2,3,4 } ;
+	Integer arr[] = { 100, 50 , 25, 75, 150, 125, 110, 175} ;
 		
 	
-		TreeNode root2 = arrayToTree(arr);
+		//TreeNode root2 = arrayToTree(arr);
 		
+			TreeNode root = null;
+			for (int i=0; i<arr.length;i++) {
+				int data = arr[i];
+				root = insert(root, data);
+			}
 		
+		int nums[] = new int[2];
+		nums[0] = Integer.MAX_VALUE; // previous
+		nums[1] = Integer.MAX_VALUE; // min
 		
-		TreeNode ca = commonAncestor(root2, htree.get(3), htree.get(4));
+		//inOrderTraversal (root,nums); 
+		//postOrderTraversal (root,nums);
+		printTreepreOrder(root);
+		//System.out.println(nums[1]);
 		
-		System.out.println(ca.data);
+		DepthFirstTraversal.DFS(root);
+		BreadthFirstTraversal.BFS(root);
+	}
+	
+	public static void inOrderTraversal (TreeNode current, int[] data )
+	{
+		if (current==null)
+			return;
+		
+		inOrderTraversal (current.left, data );
+		
+		data[1] = Math.min(data[1], Math.abs(current.data -data[0]) );
+		data[0] = current.data;
+		
+		inOrderTraversal (current.right, data );
 		
 	}
+	
+	
+	public static void preOrderTraversal (TreeNode current, int[] data )
+	{
+		if (current==null)
+			return;
+	
+		data[1] = Math.min(data[1], Math.abs(current.data -data[0]) );
+		data[0] = current.data;
+				
+		inOrderTraversal (current.left, data );
+		inOrderTraversal (current.right, data );
+		
+	}
+	
+	public static void postOrderTraversal (TreeNode current, int[] data )
+	{
+		if (current==null)
+			return;
+	
+		inOrderTraversal (current.left, data );
+		inOrderTraversal (current.right, data );
+	
+		data[1] = Math.min(data[1], Math.abs(current.data -data[0]) );
+		data[0] = current.data;
+				
+	}
+	
+	
+	public static void  findMinimumDistanceBetweenBSTNodes (TreeNode root, HashSet s)
+	{
+		if (root==null)
+			return;
+		
+		s.add(root.data);
+		
+		findMinimumDistanceBetweenBSTNodes (root.left, s);
+		findMinimumDistanceBetweenBSTNodes (root.right, s);
+		
+		return;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public static void printTreepreOrder (TreeNode root2) //LeftRootRight
+	{
+		
+		if (root2==null)
+		return;
+		
+		System.out.println("Node: " +  root2.data);
+		
+		System.out.println("\nLeft");
+		printTreepreOrder(root2.left);
+		
+		System.out.println("\nRight");
+		printTreepreOrder(root2.right);
+	}
+	
+	
+	public static TreeNode insert(TreeNode root, int data) {
+        if(root == null) {
+            return new TreeNode(data);
+        } else {
+            TreeNode cur;
+            if(data <= root.data) {
+                cur = insert(root.left, data);
+                root.left = cur;
+            } else {
+                cur = insert(root.right, data);
+                root.right = cur;
+            }
+            return root;
+        }
+    }
 	
 	public static TreeNode commonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 		if (covers(root.left, p) && covers(root.left, q))
