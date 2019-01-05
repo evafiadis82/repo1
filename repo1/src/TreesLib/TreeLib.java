@@ -4,6 +4,24 @@ import TreesLib.TreeNode;
 
 public class TreeLib {
 
+
+	public static TreeNode insert(TreeNode root, int data) {
+        if(root == null) {
+            return new TreeNode(data);
+        } else {
+            TreeNode cur;
+            if(data <= root.data) {
+                cur = insert(root.left, data);
+                root.left = cur;
+            } else {
+                cur = insert(root.right, data);
+                root.right = cur;
+            }
+            return root;
+        }
+    }
+	
+	
 	public static int maxDepth(TreeNode root) {
 		if (root == null) {
 			return 0;
